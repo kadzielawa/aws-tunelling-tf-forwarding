@@ -14,13 +14,13 @@ run docker-build . and docker run -it <docker_build_id> bash
   ssh <INSTACEC_USER>@<INSTANCE_ID> example:
 
  ```sh
- ssh ec2-user@i-23i2djs1293a
+ ssh ec2-user@i-062daea59d1xxx215ad
  ```
 
 Example output:
 
 ```sh
-root@e3b55d69a6a1:~/.ssh# ssh ec2-user@i-062daea59d18215ad
+root@e3b55d69a6a1:~/.ssh# ssh ec2-user@i-062daea59d1xxx215ad
 Add public key /root/.ssh/id_rsa.pub to instance i-062daea59d18215ad for 60 seconds
 Start ssm session to instance i-062daea59d1xxx215ad
 Warning: Permanently added 'i-062daea59dw8xxx215ad' (ECDSA) to the list of known hosts.
