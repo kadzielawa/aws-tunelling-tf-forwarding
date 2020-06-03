@@ -1,39 +1,16 @@
 # TASK 1
-Prepare Dockerfile that will build basic image containing tools like ssh,terraform,awscli and script allowing us to connect to ec2 instance via ssh tunnel created with aws ssm.
-## Usage:
-### 1. Ensure latest SSM Agent on Target Instance (AWS EC-2)
-```sh
-$ yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm 
-$ service amazon-ssm-agent restart
-```
-### 2. Clone this repository and build docker image
-run docker-build . and docker run -it <docker_build_id> bash
+Prepare terraform file that could provision aws lb forwarding traffic to target group of at least 2 ec2 instances scalable up to 5 via asg on cpu scalling policy.
 
-### 5. Open SSH Connection
- Ensure AWS CLI environemnt variables are set properly (aws configure)
-  ssh <INSTACEC_USER>@<INSTANCE_ID> example:
+##Terraform credentials
+Since Terraform will manage the whole infrastructure, including IAM roles etc. It needs credentials with a PowerUser rolle attached.
 
- ```sh
- ssh ec2-user@i-23i2djs1293a
- ```
+To make this process secure, we will get use of aws-vault tool.
 
-Example output:
+The way it works - you add PowerUser credentials into the secured vault, and before terraform operations you populate credentials into environment variables via aws-vault.
 
-```sh
-root@e3b55d69a6a1:~/.ssh# ssh ec2-user@i-062daea59d18215ad
-Add public key /root/.ssh/id_rsa.pub to instance i-062daea59d18215ad for 60 seconds
-Start ssm session to instance i-062daea59d1xxx215ad
-Warning: Permanently added 'i-062daea59dw8xxx215ad' (ECDSA) to the list of known hosts.
-Last login: Wed Jun  3 11:18:17 2020 from localhost
+How to use aws-vault and Terraform:
 
-       __|  __|_  )
-       _|  (     /   Amazon Linux AMI
-      ___|\___|___|
-
-https://aws.amazon.com/amazon-linux-ami/2018.03-release-notes/
-No packages needed for security; 7 packages available
-Run "sudo yum update" to apply all updates.
-```
-
-
+Install the tool: brew cask install aws-vault
+Add the PowerUser credentials into the vault (in this example muume-test environment credentials): aws-vault add muume-test-terraform
+Once you are ready to work with Terraform, populate the environment variables with aws-vault: aws-vault exec muume-test-terraform
 
