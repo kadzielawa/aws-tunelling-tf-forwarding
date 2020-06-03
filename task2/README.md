@@ -15,12 +15,12 @@ profile, referenced in **main.tf** contains AWS secrets which has the following 
         {
         "Effect": "Allow",
         "Action": "s3:ListBucket",
-        "Resource": "arn:aws:s3:::muume-terraform-states"
+        "Resource": "arn:aws:s3:::xxxx-terraform-states"
         },
         {
         "Effect": "Allow",
         "Action": ["s3:GetObject", "s3:PutObject"],
-        "Resource": "arn:aws:s3:::muume-terraform-states/*"
+        "Resource": "arn:aws:s3:::xxxx-terraform-states/*"
         }
     ]
 }
