@@ -11,6 +11,11 @@ The way it works - you add PowerUser credentials into the secured vault, and bef
 How to use aws-vault and Terraform:
 
 Install the tool: brew cask install aws-vault
-Add the PowerUser credentials into the vault (in this example muume-test environment credentials): aws-vault add muume-test-terraform
-Once you are ready to work with Terraform, populate the environment variables with aws-vault: aws-vault exec muume-test-terraform
-
+Add the PowerUser credentials into the vault (in this example muume-test environment credentials): 
+```sh
+aws-vault add xxxx-tfstate
+```
+Once you are ready to work with Terraform, populate the environment variables with aws-vault: 
+```sh
+aws-vault exec xxxx-tfstate
+```
