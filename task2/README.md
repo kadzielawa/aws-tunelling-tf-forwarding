@@ -1,4 +1,4 @@
-# TASK 1
+# TASK 2
 Prepare terraform file that could provision aws lb forwarding traffic to target group of at least 2 ec2 instances scalable up to 5 via asg on cpu scalling policy.
 
 
